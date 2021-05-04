@@ -2,11 +2,19 @@ import { css } from "styled-components";
 
 // Importing fonts
 
-import PocketMonk from "static/fonts/Pocket-Monk.otf";
+import PokeTitle from "static/fonts/Pocket-Monk.otf";
+import PokeFireRed from "static/fonts/pokemon_fire_red.otf";
+
 const fontFaces = css`
   @font-face {
-    font-family: "PocketMonk";
-    src: url(${PocketMonk});
+    font-family: "PokeTitle";
+    src: url(${PokeTitle});
+    font-display: swap;
+  }
+  ,
+  @font-face {
+    font-family: "PokeFireRed";
+    src: url(${PokeFireRed});
     font-display: swap;
   }
 `;

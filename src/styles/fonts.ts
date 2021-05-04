@@ -1,22 +1,13 @@
 import { css } from "styled-components";
 
-// Importing fonts
-
-import PokeTitle from "static/fonts/Pocket-Monk.otf";
-import PokeFireRed from "static/fonts/pokemon_fire_red.otf";
-
-const fontFaces = css`
+const fonts = css`
   @font-face {
-    font-family: "PokeTitle";
-    src: url(${PokeTitle});
-    font-display: swap;
-  }
-  ,
-  @font-face {
-    font-family: "PokeFireRed";
-    src: url(${PokeFireRed});
-    font-display: swap;
+    font-family: "FireRed";
+    font-style: normal;
+    font-weight: normal;
+    src: local("Pokemon Fire Red Regular"),
+      url("pokemon_fire_red.woff") format("woff");
   }
 `;
 
-export default fontFaces;
+export default fonts;

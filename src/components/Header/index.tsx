@@ -1,10 +1,12 @@
 import React from "react";
+
+import logo from "../../assets/images/logo.png";
 import { Container } from "./styles";
 
 const Header: React.FC = () => {
   return (
     <Container>
-      <h1>Poké React</h1>
+      <img src={logo} alt="header logo" />
     </Container>
   );
 };

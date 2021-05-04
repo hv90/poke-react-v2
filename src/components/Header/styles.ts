@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   h1 {
-    font-family: "PokeTitle";
+    font-family: "PokeFireRed";
     font-size: 8vh;
     color: #ffde00;
     -webkit-text-stroke-width: 1.3px;

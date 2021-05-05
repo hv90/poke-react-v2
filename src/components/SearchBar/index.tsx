@@ -7,7 +7,7 @@ import { IPokemon, IPokemonSpecies } from './types';
 import { Container } from './styles';
 
 interface Props {
-  onChange: (d: CardProps) => void;
+  onChange: (d: CardProps, w: string) => void;
 }
 
 const SearchBar: React.FC<Props> = ({ onChange }: Props) => {
@@ -62,7 +62,7 @@ const SearchBar: React.FC<Props> = ({ onChange }: Props) => {
         />
         <AiOutlineSearch className="searchIcon" />
       </div>
-      {data && onChange(data)}
+      {data && onChange(data, typedSearch)}
     </Container>
   );
 };

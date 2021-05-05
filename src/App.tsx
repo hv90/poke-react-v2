@@ -6,6 +6,11 @@ import SearchBar from 'components/SearchBar';
 
 const App: React.FC = () => {
   const [data, setData] = useState<CardProps>();
+  const [typedSearch, setTypedSearch] = useState('');
+  const handleData = (pokemonData: CardProps, word: string) => {
+    setData(pokemonData);
+    setTypedSearch(word);
+  };
   return (
     <div>
       <Header />
@@ -18,10 +23,13 @@ const App: React.FC = () => {
         }}
       >
         <SearchBar
-          onChange={(pokemonData: CardProps) => setData(pokemonData)}
+          onChange={(pokemonData: CardProps, word: string) =>
+            handleData(pokemonData, word)
+          }
         />
 
         {data && <Card {...data} />}
+        {typedSearch && !data && <p className="noResult">No PokéDex matches</p>}
       </div>
     </div>
   );

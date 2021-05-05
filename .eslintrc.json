@@ -21,6 +21,8 @@
   "plugins": ["react", "react-hooks", "prettier", "@typescript-eslint"],
   "rules": {
     "no-unused-vars": "warn",
+    "implicit-arrow-linebreak": "warn",
+    "operator-linebreak": "warn",
     "arrow-body-style": "off",
     "arrow-parens": "off",
     "react/jsx-props-no-spreading": "off",

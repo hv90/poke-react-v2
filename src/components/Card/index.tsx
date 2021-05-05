@@ -1,6 +1,6 @@
 import InteractiveIcon from 'components/InteractiveIcon';
 import getIcon from 'helpers/typeIcons';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Dropdown from './Dropdown';
 import { Container, SpriteContainer, PokeData } from './styles';
 
@@ -21,7 +21,6 @@ export interface CardProps {
   number: number;
   types: string[];
   sprite: string;
-  description: string;
   flavorData: FlavorEntry[];
 }
 
@@ -30,9 +29,32 @@ const Card: React.FC<CardProps> = ({
   number,
   types,
   sprite,
-  description,
   flavorData,
 }: CardProps) => {
+  const [flavorVersion, setFlavorVersion] = useState({
+    lang: 'en',
+    ver: flavorData.find(entry => entry.language.name === 'en')?.version
+      .name as string,
+  });
+  useEffect(
+    () =>
+      setFlavorVersion({
+        lang: 'en',
+        ver: flavorData.find(entry => entry.language.name === 'en')?.version
+          .name as string,
+      }),
+    [flavorData],
+  );
+
+  const handleFlavorVersion = (key: string) => {
+    const [newLang, newVer] = key.split('—');
+    setFlavorVersion({ lang: newLang, ver: newVer });
+  };
+
+  const declutter = (str: string) => {
+    return str.replace(String.fromCharCode(12), ' ');
+  };
+
   return (
     <Container>
       <SpriteContainer>
@@ -46,9 +68,23 @@ const Card: React.FC<CardProps> = ({
             <InteractiveIcon typeName={type} src={getIcon(type)} />
           ))}
         </h1>
-        <p>{description}</p>
+        <p>
+          {declutter(
+            `${
+              flavorData.find(
+                entry =>
+                  entry.language.name === flavorVersion.lang &&
+                  entry.version.name === flavorVersion.ver,
+              )?.flavor_text ?? flavorData[0].flavor_text
+            }`,
+          )}
+        </p>
       </PokeData>
-      <Dropdown data={flavorData} />
+      <Dropdown
+        data={flavorData}
+        onChange={handleFlavorVersion}
+        defaultFlavor={flavorVersion}
+      />
     </Container>
   );
 };

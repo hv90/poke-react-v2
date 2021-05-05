@@ -14,10 +14,6 @@ const SearchBar: React.FC<Props> = ({ onChange }: Props) => {
   const [typedSearch, setTypedSearch] = useState('');
   const [data, setData] = useState<CardProps>();
 
-  const declutter = (str: string) => {
-    return str.replace(String.fromCharCode(12), ' ');
-  };
-
   let debounceTime: any;
 
   const debounceTyping = (typedWord: string) => {
@@ -41,9 +37,6 @@ const SearchBar: React.FC<Props> = ({ onChange }: Props) => {
                 name: res.data.name,
                 types: ['grass', 'dragon', 'fire', 'fairy'],
                 sprite: res.data.sprites.front_default,
-                description: declutter(
-                  result.data.flavor_text_entries[0].flavor_text,
-                ),
                 flavorData: result.data.flavor_text_entries,
               });
             });

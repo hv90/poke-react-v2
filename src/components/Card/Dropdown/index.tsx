@@ -17,33 +17,25 @@ interface FlavorEntry {
 
 interface DropdownProps {
   data: FlavorEntry[];
+  onChange: (value: string) => void;
+  defaultFlavor: { lang: string; ver: string };
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ data }: DropdownProps) => {
-  const flavorTexts = data;
-  let targetVer = 'alpha_sapphire';
-  // for (const entry of flavorTexts) {
-  //   if (entry.language.name === 'en') {
-  //     targetVer = entry.version.name;
-  //     break;
-  //   }
-  // }
-  flavorTexts.map(entry => {
-    if (entry.language.name === 'en' && targetVer === 'alpha_sapphire') {
-      targetVer = entry.version.name;
-    }
-    return entry;
-  });
+const Dropdown: React.FC<DropdownProps> = ({
+  data,
+  onChange,
+  defaultFlavor,
+}: DropdownProps) => {
   return (
-    // TODO: add onChange as prop
-    <DropdownSelect>
-      {flavorTexts.map(entry => (
+    <DropdownSelect onChange={e => onChange(e.target.value)}>
+      {data.map(entry => (
         <option
           className="listElement"
           value={`${entry.language.name}—${entry.version.name}`}
           key={`${entry.language.name}—${entry.version.name}`}
           selected={
-            entry.language.name === 'en' && entry.version.name === targetVer
+            entry.language.name === defaultFlavor.lang &&
+            entry.version.name === defaultFlavor.ver
           }
         >
           {`${formatLang(entry.language.name)} — ${formatVersion(

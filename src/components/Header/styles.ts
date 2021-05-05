@@ -8,4 +8,5 @@ export const Container = styled.div`
   border-bottom: 10px solid #a30000;
 
   background-color: #cc0000;
+  margin-bottom: 30px;
 `;

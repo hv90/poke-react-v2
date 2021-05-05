@@ -3,6 +3,7 @@ const CardDefaultProps = {
   sprite:
     'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png',
   number: 1,
+  types: ['grass'],
   description:
     'Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun’s rays, the seed grows progressively larger.',
   flavorData: [

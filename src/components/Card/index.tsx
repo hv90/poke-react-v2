@@ -1,6 +1,8 @@
+import InteractiveIcon from 'components/InteractiveIcon';
+import getIcon from 'helpers/typeIcons';
 import React from 'react';
 import Dropdown from './Dropdown';
-import { Container } from './styles';
+import { Container, SpriteContainer, PokeData } from './styles';
 
 interface FlavorEntry {
   // eslint-disable-next-line camelcase
@@ -17,6 +19,7 @@ interface FlavorEntry {
 export interface CardProps {
   name: string;
   number: number;
+  types: string[];
   sprite: string;
   description: string;
   flavorData: FlavorEntry[];
@@ -25,28 +28,26 @@ export interface CardProps {
 const Card: React.FC<CardProps> = ({
   name,
   number,
+  types,
   sprite,
   description,
   flavorData,
 }: CardProps) => {
   return (
     <Container>
-      <img src={sprite} alt={`${name}'s sprite`} />
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-around',
-          height: '100%',
-        }}
-      >
+      <SpriteContainer>
+        <img src={sprite} alt={`${name}'s sprite`} className="sprite" />
+        <p>{`#${number}`}</p>
+      </SpriteContainer>
+      <PokeData>
         <h1>
           {name}
-
-          {` - #${number}`}
+          {types.map(type => (
+            <InteractiveIcon typeName={type} src={getIcon(type)} />
+          ))}
         </h1>
         <p>{description}</p>
-      </div>
+      </PokeData>
       <Dropdown data={flavorData} />
     </Container>
   );

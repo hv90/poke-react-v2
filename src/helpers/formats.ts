@@ -1,7 +1,11 @@
-export const formatVersion = (version: string) => {
+export const capitalize = (str: string): string =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  str.replace(/^\w/, c => c.toUpperCase());
+
+export const formatVersion = (version: string): string => {
   switch (version) {
     default:
-      return version.replace(/^\w/, c => c.toUpperCase());
+      return capitalize(version);
     case 'leafgreen':
       return 'Leaf Green';
     case 'firered':
@@ -25,7 +29,7 @@ export const formatVersion = (version: string) => {
   }
 };
 
-export const formatLang = (lang: string) => {
+export const formatLang = (lang: string): string => {
   switch (lang) {
     default:
       return lang.toUpperCase();

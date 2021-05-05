@@ -35,7 +35,7 @@ const SearchBar: React.FC<Props> = ({ onChange }: Props) => {
               setData({
                 number: res.data.id,
                 name: res.data.name,
-                types: ['grass', 'dragon', 'fire', 'fairy'],
+                types: res.data.types.map(type => type.type.name),
                 sprite: res.data.sprites.front_default,
                 flavorData: result.data.flavor_text_entries,
               });

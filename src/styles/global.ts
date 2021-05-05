@@ -34,7 +34,7 @@ const GlobalStyles = createGlobalStyle`
     width: 100%;
     display: block;
 
-    background-color: ${({ theme }) => theme.colors.bg}99;
+    background-color: ${({ theme }) => theme.colors.bg};
 
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;

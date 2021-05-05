@@ -5,6 +5,7 @@ export interface IPokemon {
     // eslint-disable-next-line camelcase
     front_default: string;
   };
+  types: { type: { name: string } }[];
 }
 
 export interface IPokemonSpecies {

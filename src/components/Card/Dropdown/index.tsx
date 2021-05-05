@@ -26,9 +26,12 @@ const Dropdown: React.FC<DropdownProps> = ({
   onChange,
   defaultFlavor,
 }: DropdownProps) => {
+  const flavorList = data.filter(
+    (element, index) => data.indexOf(element) === index,
+  );
   return (
     <DropdownSelect onChange={e => onChange(e.target.value)}>
-      {data.map(entry => (
+      {flavorList.map(entry => (
         <option
           className="listElement"
           value={`${entry.language.name}—${entry.version.name}`}

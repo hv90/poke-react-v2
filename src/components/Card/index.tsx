@@ -2,7 +2,13 @@ import InteractiveIcon from 'components/InteractiveIcon';
 import getIcon from 'helpers/typeIcons';
 import React, { useEffect, useState } from 'react';
 import Dropdown from './Dropdown';
-import { Container, SpriteContainer, PokeData } from './styles';
+import {
+  Container,
+  SpriteContainer,
+  PokeData,
+  SaveIcon,
+  RemoveIcon,
+} from './styles';
 
 interface FlavorEntry {
   // eslint-disable-next-line camelcase
@@ -22,6 +28,8 @@ export interface CardProps {
   types: string[];
   sprite: string;
   flavorData: FlavorEntry[];
+  saved?: boolean;
+  onToggleSave?: (Object: CardProps) => void;
 }
 
 const Card: React.FC<CardProps> = ({
@@ -30,6 +38,8 @@ const Card: React.FC<CardProps> = ({
   types,
   sprite,
   flavorData,
+  saved,
+  onToggleSave,
 }: CardProps) => {
   const [flavorVersion, setFlavorVersion] = useState({
     lang: 'en',
@@ -85,8 +95,38 @@ const Card: React.FC<CardProps> = ({
         onChange={handleFlavorVersion}
         defaultFlavor={flavorVersion}
       />
+      {onToggleSave && !saved && (
+        <SaveIcon
+          onClick={() =>
+            onToggleSave({
+              name,
+              number,
+              types,
+              sprite,
+              flavorData,
+            })
+          }
+        />
+      )}
+      {onToggleSave && saved && (
+        <RemoveIcon
+          onClick={() =>
+            onToggleSave({
+              name,
+              number,
+              types,
+              sprite,
+              flavorData,
+            })
+          }
+        />
+      )}
     </Container>
   );
+};
+
+Card.defaultProps = {
+  saved: true,
 };
 
 export default Card;

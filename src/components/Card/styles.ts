@@ -1,10 +1,23 @@
 import styled from 'styled-components';
+import { Save } from '@styled-icons/heroicons-solid';
+import { RemoveCircle } from '@styled-icons/ionicons-solid';
+
+export const SaveIcon = styled(Save)`
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+export const RemoveIcon = styled(RemoveCircle)`
+  color: ${({ theme }) => theme.colors.text};
+`;
 
 export const Container = styled.div`
   display: flex;
   position: relative;
   align-items: center;
   justify-content: center;
+  transition: all 500ms ease-out;
+  overflow: visible;
+  margin-bottom: 25px;
 
   border-radius: 20px;
   background-color: ${({ theme }) => theme.colors.bg};
@@ -27,6 +40,19 @@ export const Container = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
+  }
+
+  svg {
+    position: absolute;
+    left: 94%;
+    transform: translateX(150%);
+    opacity: 0.1;
+    transition: 100ms all ease-out;
+  }
+
+  svg:hover {
+    opacity: 0.5;
+    cursor: pointer;
   }
 `;
 

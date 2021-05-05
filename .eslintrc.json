@@ -21,6 +21,9 @@
   "plugins": ["react", "react-hooks", "prettier", "@typescript-eslint"],
   "rules": {
     "no-unused-vars": "warn",
+    "prefer-template": "warn",
+    "react/jsx-curly-newline": "warn",
+    "object-curly-newline": "warn",
     "implicit-arrow-linebreak": "warn",
     "operator-linebreak": "warn",
     "arrow-body-style": "off",

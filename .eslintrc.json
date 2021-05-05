@@ -19,6 +19,9 @@
   },
   "plugins": ["react", "react-hooks", "prettier", "@typescript-eslint"],
   "rules": {
+    "arrow-body-style": "off",
+    "arrow-parens": "off",
+    "react/jsx-props-no-spreading": "off",
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",

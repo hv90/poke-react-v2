@@ -12,14 +12,15 @@ export const Container = styled.div`
   max-width: 50vw;
   min-height: 150px;
   // height: 150px;
-  padding: 10px;
+  padding: 10px 20px;
 
   h1 {
     font-weight: normal;
   }
 
   .sprite {
-    transform: scale(1.3);
+    // transform: scale(1.3);
+    margin-right: 20px;
   }
 
   select {
@@ -34,8 +35,6 @@ export const SpriteContainer = styled.div`
   place-content: center;
   p {
     position: absolute;
-    bottom: 10px;
-    right: 42%;
     color: ${({ theme }) => theme.colors.details};
   }
 `;

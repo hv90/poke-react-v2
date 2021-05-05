@@ -14,7 +14,7 @@ interface FlavorEntry {
     url: string;
   };
 }
-interface CardProps {
+export interface CardProps {
   name: string;
   number: number;
   sprite: string;

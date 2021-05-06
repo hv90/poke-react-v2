@@ -109,7 +109,7 @@ export const ThemeContainer = styled.div`
     vertical-align: middle;
     border-radius: 5px;
     font-size: 22px;
-    background-color: ${({ theme }) => theme.colors.lightContrast};
+    background-color: ${({ theme }) => theme.colors.lightContrast}70;
     visibility: hidden;
   }
 

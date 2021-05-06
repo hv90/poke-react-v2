@@ -85,7 +85,7 @@ const Card: React.FC<CardProps> = ({
                 entry =>
                   entry.language.name === flavorVersion.lang &&
                   entry.version.name === flavorVersion.ver,
-              )?.flavor_text ?? flavorData[0].flavor_text
+              )?.flavor_text
             }`,
           )}
         </p>

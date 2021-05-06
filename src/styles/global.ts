@@ -43,6 +43,12 @@ const GlobalStyles = createGlobalStyle`
     font-size: 2.2rem;
     color: ${({ theme }) => theme.colors.text};
   }
+
+  p.noResult {
+    color: ${({ theme }) => theme.colors.details};
+    font-size: 25px;
+    margin-bottom: 31px;
+  }
 `;
 
 export default GlobalStyles;

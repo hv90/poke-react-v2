@@ -3,9 +3,20 @@ import Card, { CardProps } from 'components/Card';
 import Header from 'components/Header'; /*
 import CardDefaultProps from 'mock/card'; */
 import SearchBar from 'components/SearchBar';
+import spinner from 'static/images/loader.png';
+import { LoaderContainer, NoResultCard } from './Styles';
 
 const App: React.FC = () => {
   const [data, setData] = useState<CardProps>();
+  const [typedSearch, setTypedSearch] = useState('');
+  const [loading, setLoading] = useState(false);
+  const handleData = (pokemonData: CardProps, word: string) => {
+    setData(pokemonData);
+    setTypedSearch(word);
+  };
+  useEffect(() => {
+    // do nothing
+  }, [typedSearch]);
   const [saved, setSaved] = useState<CardProps[]>([]);
 
   const saveCard = (newCard: CardProps) => {
@@ -28,23 +39,47 @@ const App: React.FC = () => {
         }}
       >
         <SearchBar
-          onChange={(pokemonData: CardProps) => setData(pokemonData)}
+          onChange={(pokemonData: CardProps, word: string) => {
+            return handleData(pokemonData, word);
+          }}
+          isFetching={(isFetching: boolean) => setLoading(isFetching)}
         />
 
-        {data && !saved.find(card => data.name === card.name) && (
+        {typedSearch !== '' &&
+          !loading &&
+          data &&
+          !saved.find(card => data.name === card.name) &&
+          !(data?.number === -666) && (
+            <Card
+              {...data}
+              saved={false}
+              onToggleSave={saveCard}
+              key={`${data.name}-f`}
+            />
+            // eslint-disable-next-line indent
+          )}
+        {typedSearch !== '' && loading && (
+          <LoaderContainer>
+            <img className="spinner" src={spinner} alt="loading..." />
+          </LoaderContainer>
+        )}
+        {typedSearch !== '' && !loading && data?.number === -666 && (
+          <p className="noResult">No PokéDex matches</p>
+        )}
+        {/* {data && !saved.find(card => data.name === card.name) && (
           <Card
             {...data}
             saved={false}
             onToggleSave={saveCard}
-            key={data.name + '-f'}
+            key={`${data.name}-f`}
           />
-        )}
+        )} */}
         {saved.map(savedData => (
           <Card
             {...savedData}
             saved
             onToggleSave={removeCard}
-            key={savedData.name + '-t'}
+            key={`${savedData.name}-t`}
           />
         ))}
       </div>

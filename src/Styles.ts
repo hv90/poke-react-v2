@@ -53,8 +53,14 @@ export const ThemeContainer = styled.div`
   margin-left: 20px;
   border-radius: 100px;
   align-items: center;
+  opacity: 0.5;
   background-color: ${({ theme }) => theme.colors.bg};
   box-shadow: 0px 8px 10px rgba(29, 29, 29, 0.699);
+
+  :hover {
+    opacity: 1;
+    cursor: pointer;
+  }
 
   img {
     height: 50%;

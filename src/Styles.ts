@@ -59,7 +59,6 @@ export const LoaderContainer = styled.div`
 export const ThemeContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 6vh;
   height: 50px;
   width: 50px;
   margin-left: 20px;

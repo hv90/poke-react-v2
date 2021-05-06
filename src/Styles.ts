@@ -43,3 +43,26 @@ export const LoaderContainer = styled.div`
     }
   }
 `;
+
+export const ThemeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 6vh;
+  height: 50px;
+  width: 50px;
+  margin-left: 20px;
+  border-radius: 100px;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.bg};
+  box-shadow: 0px 8px 10px rgba(29, 29, 29, 0.699);
+
+  img {
+    height: 50%;
+    width: 50%;
+  }
+
+  .dark {
+    height: 40%;
+    width: 40%;
+  }
+`;

@@ -15,9 +15,11 @@ export const NoResultCard = styled.div`
   min-height: 150px;
   // height: 150px;
   padding: 10px 20px;
+
   h1 {
     font-weight: normal;
   }
+
   select {
     position: absolute;
     top: 10px;
@@ -31,6 +33,7 @@ export const LoaderContainer = styled.div`
     height: 50px;
     animation: 0.65s loader infinite ease-in-out;
   }
+
   @keyframes loader {
     from {
       transform: rotate(19deg);
@@ -38,5 +41,28 @@ export const LoaderContainer = styled.div`
     to {
       transform: rotate(360deg);
     }
+  }
+`;
+
+export const ThemeContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 6vh;
+  height: 50px;
+  width: 50px;
+  margin-left: 20px;
+  border-radius: 100px;
+  align-items: center;
+  background-color: ${({ theme }) => theme.colors.bg};
+  box-shadow: 0px 8px 10px rgba(29, 29, 29, 0.699);
+
+  img {
+    height: 50%;
+    width: 50%;
+  }
+
+  .dark {
+    height: 40%;
+    width: 40%;
   }
 `;

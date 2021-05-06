@@ -14,7 +14,6 @@ interface Props {
 const SearchBar: React.FC<Props> = ({ onChange, isFetching }: Props) => {
   const [typedSearch, setTypedSearch] = useState('');
   const [data, setData] = useState<CardProps>();
-
   let debounceTime: any;
 
   const debounceTyping = (typedWord: string) => {

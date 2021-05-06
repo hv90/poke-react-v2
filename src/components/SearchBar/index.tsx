@@ -36,21 +36,23 @@ const SearchBar: React.FC<Props> = ({ onChange, isFetching }: Props) => {
           flavorData: [],
         });
         try {
-          await api.get<IPokemon>(`/pokemon/${typedSearch}`).then(async res => {
-            if (res.data.name !== '') {
-              await api
-                .get<IPokemonSpecies>(`/pokemon-species/${res.data.name}`)
-                .then(result => {
-                  setData({
-                    number: res.data.id,
-                    name: res.data.name,
-                    types: res.data.types.map(type => type.type.name),
-                    sprite: res.data.sprites.front_default,
-                    flavorData: result.data.flavor_text_entries,
+          await api
+            .get<IPokemon>(`/pokemon/${typedSearch.toLowerCase()}`)
+            .then(async res => {
+              if (res.data.name !== '') {
+                await api
+                  .get<IPokemonSpecies>(`/pokemon-species/${res.data.name}`)
+                  .then(result => {
+                    setData({
+                      number: res.data.id,
+                      name: res.data.name,
+                      types: res.data.types.map(type => type.type.name),
+                      sprite: res.data.sprites.front_default,
+                      flavorData: result.data.flavor_text_entries,
+                    });
                   });
-                });
-            }
-          });
+              }
+            });
           isFetching(false);
         } catch (e) {
           console.error(e);

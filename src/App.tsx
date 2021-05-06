@@ -92,33 +92,42 @@ const App: React.FC = () => {
           </ThemeContainer>
         </div>
 
-        {typedSearch !== '' && !loading && data && !(data?.number === -666) && (
-          <Card {...data} />
-        )}
+        {typedSearch !== '' &&
+          !loading &&
+          data &&
+          !saved.find(card => data.name === card.name) &&
+          !(data?.number === -666) && (
+            <Card
+              {...data}
+              saved={false}
+              onToggleSave={saveCard}
+              key={`${data.name}-f`}
+            />
+            // eslint-disable-next-line indent
+          )}
+
         {typedSearch !== '' && loading && (
           <LoaderContainer>
             <img className="spinner" src={spinner} alt="loading..." />
           </LoaderContainer>
         )}
         {typedSearch !== '' && !loading && data?.number === -666 && (
-          <NoResultCard>
-            <p className="noResult">No PokéDex matches</p>
-          </NoResultCard>
+          <p className="noResult">No PokéDex matches</p>
         )}
-        {data && !saved.find(card => data.name === card.name) && (
+        {/* {data && !saved.find(card => data.name === card.name) && (
           <Card
             {...data}
             saved={false}
             onToggleSave={saveCard}
-            key={data.name + '-f'}
+            key={`${data.name}-f`}
           />
-        )}
+        )} */}
         {saved.map(savedData => (
           <Card
             {...savedData}
             saved
             onToggleSave={removeCard}
-            key={savedData.name + '-t'}
+            key={`${savedData.name}-t`}
           />
         ))}
       </div>

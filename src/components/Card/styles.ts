@@ -30,6 +30,7 @@ export const Container = styled.div`
       ${({ theme }) => (theme.title === 'dark' ? '0.699' : '0.3')}
     );
   max-width: 50vw;
+  width: 900px;
   min-height: 150px;
   // height: 150px;
   padding: 10px 20px;
@@ -61,14 +62,58 @@ export const Container = styled.div`
     opacity: 0.5;
     cursor: pointer;
   }
+
+  @media (max-width: 1060px) {
+    height: 400px;
+    width: 300px;
+    max-width: 90vw;
+
+    flex-direction: column-reverse;
+    justify-content: space-between;
+
+    select {
+      // display: none;
+      position: relative;
+      margin-left: 20px;
+    }
+    svg {
+      position: absolute;
+      left: 80%;
+      bottom: 2px;
+      transform: none;
+      height: 40px;
+    }
+  }
 `;
 
 export const SpriteContainer = styled.div`
   position: relative;
-  place-content: center;
-  p {
+  p.number {
     position: absolute;
     color: ${({ theme }) => theme.colors.details};
+  }
+
+  p.mobileDescription {
+    display: none;
+  }
+
+  @media (max-width: 1060px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 65%;
+    transform: translateY(-20px);
+
+    img.sprite {
+      margin: 0;
+      width: 80%;
+    }
+
+    p.mobileDescription {
+      display: initial;
+    }
   }
 `;
 
@@ -90,5 +135,13 @@ export const PokeData = styled.div`
 
   p {
     font-size: 2.6rem;
+  }
+
+  @media (max-width: 1060px) {
+    p {
+      display: none;
+    }
+
+    height: min-content;
   }
 `;

@@ -57,7 +57,7 @@ const App: React.FC = () => {
           placeItems: 'center',
         }}
       >
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex', maxWidth: '90vw' }}>
           <SearchBar
             onChange={(pokemonData: CardProps, word: string) => {
               return handleData(pokemonData, word);

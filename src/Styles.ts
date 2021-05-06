@@ -126,4 +126,8 @@ export const ThemeContainer = styled.div`
     height: 40%;
     width: 40%;
   }
+
+  @media (max-width: 560px) {
+    margin-left: 15px;
+  }
 `;

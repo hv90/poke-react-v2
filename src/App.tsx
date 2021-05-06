@@ -10,7 +10,7 @@ import defaultTheme from 'styles/themes/default';
 import darkmodeIcon from 'static/images/darkmodeIcon.png';
 import defaultmodeIcon from 'static/images/defaultmodeIcon.png';
 import GlobalStyles from './styles/global';
-import { LoaderContainer, NoResultCard, ThemeContainer } from './Styles';
+import { LoaderContainer, ThemeContainer } from './Styles';
 
 interface Theme {
   title: string;

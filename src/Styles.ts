@@ -1,4 +1,16 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const bounceInBottom = keyframes`
+  from {
+    opacity: 0;
+    transform: translate(-50%, -3px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+`;
 
 export const NoResultCard = styled.div`
   display: flex;
@@ -53,13 +65,57 @@ export const ThemeContainer = styled.div`
   margin-left: 20px;
   border-radius: 100px;
   align-items: center;
-  opacity: 0.5;
-  background-color: ${({ theme }) => theme.colors.bg};
-  box-shadow: 0px 8px 10px rgba(29, 29, 29, 0.699);
+  opacity: 0.95;
+  background-color: ${({ theme }) => theme.colors.lightContrast}30;
+  box-shadow: 0px 8px 10px
+    rgba(
+      29,
+      29,
+      29,
+      ${({ theme }) => (theme.title === 'dark' ? '0.699' : '0.4')}
+    );
+  transition: all 200ms ease-out;
+  transform: scale(1);
 
   :hover {
     opacity: 1;
     cursor: pointer;
+    box-shadow: 0px 8px 10px
+      rgba(
+        29,
+        29,
+        29,
+        ${({ theme }) => (theme.title === 'dark' ? '0.4' : '0.2')}
+      );
+    transform: scale(1.02);
+  }
+
+  :after {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    content: '${({ theme }) => {
+      return theme.title === 'dark' ? 'light' : 'dark';
+    }} mode';
+    width: max-content;
+    display: flex;
+    padding: 5px;
+    padding-top: 0;
+    padding-bottom: 4px;
+    align-content: center;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 5px;
+    font-size: 22px;
+    background-color: ${({ theme }) => theme.colors.lightContrast};
+    visibility: hidden;
+  }
+
+  :hover:after {
+    animation: ${bounceInBottom} 300ms cubic-bezier(0.16, 0.79, 0.58, 0.97);
+    visibility: visible;
   }
 
   img {

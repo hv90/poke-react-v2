@@ -27,10 +27,8 @@ const SearchBar: React.FC<Props> = ({ onChange, isFetching }: Props) => {
 
   const debounceTyping = (typedWord: string) => {
     clearTimeout(debounceTime);
-    isFetching(true);
     debounceTime = setTimeout(() => {
       setTypedSearch(typedWord);
-      isFetching(false);
     }, 1000);
   };
 
@@ -46,6 +44,7 @@ const SearchBar: React.FC<Props> = ({ onChange, isFetching }: Props) => {
         });
         setGreeting(false);
         try {
+          isFetching(true);
           await api
             .get<IPokemon>(`/pokemon/${typedSearch.toLowerCase()}`)
             .then(async res => {
@@ -66,6 +65,7 @@ const SearchBar: React.FC<Props> = ({ onChange, isFetching }: Props) => {
           isFetching(false);
         } catch (e) {
           console.error(e);
+          isFetching(false);
         }
       }
     };

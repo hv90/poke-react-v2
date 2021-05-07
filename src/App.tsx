@@ -7,7 +7,6 @@ import spinner from 'static/images/loader.png';
 import { ThemeProvider } from 'styled-components';
 import darkTheme from 'styles/themes/dark';
 import defaultTheme from 'styles/themes/default';
-import jwt from 'jwt-simple';
 import darkmodeIcon from 'static/images/darkmodeIcon.png';
 import defaultmodeIcon from 'static/images/defaultmodeIcon.png';
 import GlobalStyles from './styles/global';
@@ -38,18 +37,6 @@ const App: React.FC = () => {
     // do nothing
   }, [typedSearch]);
 
-  useEffect(() => {
-    const handleCache = () => {
-      if (document.getElementById('root')?.innerHTML != null) {
-        localStorage.setItem(
-          `@lastKnown_${window.location.href}`,
-          jwt.encode(document.getElementById('root')?.innerHTML, '123456'),
-        );
-      }
-    };
-    window.addEventListener('beforeunload', handleCache);
-    return () => window.removeEventListener('beforeunload', handleCache);
-  }, []);
   const [saved, setSaved] = useState<CardProps[]>([]);
 
   const saveCard = (newCard: CardProps) => {

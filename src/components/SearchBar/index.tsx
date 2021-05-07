@@ -27,13 +27,10 @@ const SearchBar: React.FC<Props> = ({ onChange, isFetching }: Props) => {
   ];
 
   const debounceTyping = (typedWord: string) => {
-    if (lastTypedSearch !== typedWord) {
-      clearTimeout(debounceTime);
-      debounceTime = setTimeout(() => {
-        setTypedSearch(typedWord);
-        setLastTypedSearch(typedWord);
-      }, 1000);
-    }
+    clearTimeout(debounceTime);
+    debounceTime = setTimeout(() => {
+      setTypedSearch(typedWord);
+    }, 1000);
   };
 
   useEffect(() => {

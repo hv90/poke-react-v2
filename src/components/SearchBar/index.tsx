@@ -13,6 +13,7 @@ interface Props {
 
 const SearchBar: React.FC<Props> = ({ onChange, isFetching }: Props) => {
   const [typedSearch, setTypedSearch] = useState('');
+  const [lastTypedSearch, setLastTypedSearch] = useState('');
   const [data, setData] = useState<CardProps>();
   const [greeting, setGreeting] = useState(true);
   let debounceTime: any;
@@ -59,10 +60,10 @@ const SearchBar: React.FC<Props> = ({ onChange, isFetching }: Props) => {
                       sprite: res.data.sprites.front_default,
                       flavorData: result.data.flavor_text_entries,
                     });
+                    isFetching(false);
                   });
               }
             });
-          isFetching(false);
         } catch (e) {
           console.error(e);
           isFetching(false);
